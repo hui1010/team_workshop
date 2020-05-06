@@ -4,8 +4,8 @@ public class CustomerSequencer {
     static int counter = 0;
 
     public static int nextCustomerId(){
-        ++counter;
-        return counter;
+
+        return ++counter;
     }
 
     public static int getCustomerId(){

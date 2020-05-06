@@ -6,17 +6,14 @@ public class Customer {
     private String firstName;
     private String lastName;
     private final int customerId;
-    private String customerEmail;
+    private final String customerEmail;
 
 
-    public Customer() {
-        this.customerId = getCustomerId();
-    }
-
-    public Customer(String firstName, String lastName) {
+    public Customer(String firstName, String lastName, final int customerId, final String customerEmail) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.customerId = nextCustomerId();
+        this.customerId = customerId;
+        this.customerEmail = customerEmail;
     }
 
     public String getFirstName() {
@@ -43,8 +40,5 @@ public class Customer {
         return customerEmail;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
 
 }
