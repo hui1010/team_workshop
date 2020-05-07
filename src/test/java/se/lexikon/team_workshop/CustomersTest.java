@@ -8,9 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CustomersTest {
-    Customers testCustomers = new Customers();
 
+    Customers testCustomers = new Customers();
     @Before
+
     public void setUp() throws Exception {
         testCustomers.add("Tom", "Cruise", "tom.cruise@123.com");
         testCustomers.add("Tom", "Hanks", "tom.hanks@123.com");
@@ -22,6 +23,7 @@ public class CustomersTest {
         assertEquals(2, testCustomers.getCustomer().length);
         //the first added one should get the Id 1
         assertEquals(1, testCustomers.findCustomer(1).getCustomerId());
+        assertEquals("Cruise", testCustomers.findCustomer(1).getLastName());
         //the customer whose ID is 2 should be the Tom Hanks and his email should be the same as written above
         assertEquals("tom.hanks@123.com", testCustomers.findCustomer(2).getCustomerEmail());
         //when search for an email address, should be able to find the right person
@@ -45,10 +47,20 @@ public class CustomersTest {
         assertNull(testCustomers.findCustomer(1).getLastName());
     }
 
-    //todo test remove by email~
+    @Test
+    public void remove_one_email_length_should_become_1() {
+        testCustomers.remove("tom.hanks@123.com");
+        assertEquals(1, testCustomers.getCustomer().length);
+        //see if Tom Hanks is removed, if yes, the first and last name should be null
+        assertNull(testCustomers.findCustomer(2).getFirstName());
+        //check by the email address as well
+        assertNull(testCustomers.findCustomer("tom.hanks@123.com").getFirstName());
+    }
+
 
     @After
     public void tearDown() throws Exception {
+        testCustomers.clear();
         resetCustomerId();
     }
 }

@@ -144,5 +144,9 @@ public class Customers {
         return index;
     }
 
+    public void clear(){
+        customer = new Customer[0];
+    }
+
 
 }

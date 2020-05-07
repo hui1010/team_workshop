@@ -11,7 +11,7 @@ public class BankAccountSequencer {
         return counter;
     }
 
-    public void resetBankAccountId(){
+    public static void resetBankAccountId(){
         counter = 0;
     }
 }
